@@ -1,0 +1,19 @@
+.icon {
+    font-size: 40px; /* Ajustez selon vos préférences */
+    color: black; /* Rend les icônes noires */
+}
+.inner {
+    text-align: center; 
+    padding-top: 3%;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 18px;
+}
+
+.contact {
+    padding-top: 3%;
+}
+
+.about {
+    padding-top: 1%; 
+}
