@@ -1,0 +1,19 @@
+.articles {
+    margin-top: 3%;
+}
+
+article a {
+    margin-top: 2%; 
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f9f9f9;;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+article a:hover {
+    transform: scale(1.1);
+}
