@@ -1,19 +1,26 @@
-.articles {
-    margin-top: 3%;
+.post-entry {
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    transition: transform .1s;
+    border: rgb(238, 238, 238);
 }
 
-article a {
-    margin-top: 2%; 
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #f9f9f9;;
-    color: black;
-    border: 2px solid black;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: transform 0.3s ease;
+.post-entry:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
 }
 
-article a:hover {
-    transform: scale(1.1);
+.entry-footer {
+    font-size: 13px;
+}
+
+.entry-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }

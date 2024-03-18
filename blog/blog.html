@@ -4,29 +4,35 @@
         <meta name="ROBOTS" content="INDEX,FOLLOW">
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Julien Delavande Blog</title>
-        <meta name="description" content="Julien Delavande's blog">
+        <title>Julien Delavande</title>
+        <meta name="description" content="Julien Delavande's homepage">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" href="blog.css">
         <link rel="stylesheet" href="./../main.css">
+        <link rel="stylesheet" href="./blog.css">
         <link rel="icon" href="img/favicon.png" type="image/x-icon">
     </head>
     <body>
+        <div class="name">
+            <h1 >Julien <br>Delavande</h1>
+            <a href="./../index.html" class="name-link"></a>
+        </div>
+        <div class="navbar">
+            <a href="./../index.html" class="nav-item">About</a>
+            <a href="./blog.html" class="nav-item nav-item-active">Blog</a>
+        </div> 
         <div class="inner">
-            <h1 >Julien Delavande's blog</h1>
-            <div class='button main'>
-                <a href="../index.html">Main</a>
-            </div>
-            <div class="articles">
-                <article>
-                    <a href="PIE.html">
-                        <h2>- Team project at Supaero (PIE) -<br>
-                        Reading the brain</h2>
-                        <p>Publishing date: 14 March 2024</p>
-                        <p>Predicting movement in stroke patients using EEG signals for rehabilitation.</p>
-                    </a>
-                </article>
+                <article class="post-entry"> 
+                    <header class="entry-header">
+                      <h2>Predicting mouvement using EEG
+                      </h2>
+                    </header>
+                    <section class="entry-content">
+                      <p>Predicting movement in stroke patients using EEG signals for rehabilitation. PIE project from ISAE Supaero</p>
+                    </section>
+                    <footer class="entry-footer">Date: March 18, 2024  |  Estimated Reading Time: 21 min  |  Author: Julien Delavande</footer>
+                    <a class="entry-link" aria-label="post link to Predicting mouvement using EEG" href="./articles/PIE.html"></a>
+                  </article>
                 <!-- Ajoute plus d'articles selon tes besoins -->
             </div>
         </div>

@@ -1,5 +1,55 @@
+body {
+    font-family: Anonymous Pro, Courier New, Courier, monospace;
+    background-color: rgb(245, 245, 245);
+}
+
+.navbar {
+    position: fixed; /* Ou `absolute`, selon le contexte */
+    top: 0;
+    right: 0;
+    padding-right: 10%;
+    padding-top: 1%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px; /* Ajustez ceci selon l'espace que vous voulez en dessous de la barre */
+  }
+  
+.nav-item {
+    text-decoration: none;
+    color: black; /* Couleur du texte des liens */
+    padding: 10px; /* Espace autour du texte dans le lien */
+    margin-left: 10px; /* Espace entre les éléments */
+    font-family: sans-serif; /* Le type de police utilisé */
+    font-size: 16px; /* La taille de la police */
+    border-bottom: 3px solid transparent; /* La bordure en bas du lien, transparent quand non survolé */
+}
+
+.nav-item:hover {
+    border-bottom: 3px solid black; /* Bordure noire au survol pour l'effet souligné */
+    }
+
+.nav-item-active {
+    border-bottom: 3px solid black; /* Bordure noire pour le lien actif */
+    }
+
+.name {
+    position: fixed; /* Ou `absolute`, selon le contexte */
+    top: 0;
+    left: 0;
+    margin-left: 10%;
+    display: flex;
+    font-size: 12px;
+}
+.name-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
 .icon {
-    font-size: 40px;
+    font-size: 30px;
     color: black;
     transition: transform 0.3s ease;
 }
@@ -9,33 +59,17 @@
 }
 
 .inner {
-    font-family: Anonymous Pro, Courier New, Courier, monospace;
-    text-align: center; 
-    padding-top: 3%;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-top: 5%;
+    padding-left: 25%;
+    padding-right: 25%;
     font-size: 18px;
 }
 
 .about {
+    text-align: left;
     padding-top: 1%; 
 }
 
-.button a {
-    margin-top: 2%; 
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-
-.button a:hover {
-    transform: scale(1.1);
-}
-
 .contact {
-    padding-top: 3%;
+    text-align: left;
 }
