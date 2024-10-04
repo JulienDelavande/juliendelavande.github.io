@@ -119,33 +119,39 @@
 
                 <h2 id="objectifs">Objectifs<a hidden="" class="anchor" aria-hidden="true" href="#objectifs">#</a></h2>
                 <p>
-                    Au cœur de notre aventure, un objectif principal se détache : concevoir un algorithme capable de détecter 
-                    l'intention de mouvement à partir de signaux cérébraux, ou EEG, avec une précision surpassant 
-                    les réalisations précédentes.
+                    - Concevoir un algorithme capable de détecter l'intention de mouvement à partir de signaux cérébraux, ou EEG.
                 </p>
                 <p>
-                    Le voyage se poursuit avec la mise au point d'algorithmes dédiés à la transformation de ces signaux 
-                    en données exploitables, à l'entraînement de nos modèles et à leur évaluation. 
-                    Chaque étape, reproduite avec la plus grande rigueur, s'inscrit dans une démarche scientifique, 
-                    documentée et précise, ouvrant la voie à une exploration approfondie et sérieuse. 
-                    Nous avons l'opportunité de nous appuyer sur les fondations établies par nos prédécesseurs, 
-                    tout en ayant la liberté de réinventer.
+                    - Mettre en place des algorithmes pour le traitement des données, l'entraînement et l'évaluation de modèles de manière standardisée et rigoureuse.
                 </p>
                 <p>
-                    Notre odyssée ne serait complète sans l'ultime défi : 
-                    l'intégration de cet algorithme au sein d'une interface homme-machine intuitive et accessible. 
-                    L'objectif ? Déployer une application de bureau sur les ordinateurs du CHU, des machines fonctionnant 
-                    sous Windows, sans nécessiter un environnement Python pré-installé. Nous sommes face à un choix : 
-                    insuffler une nouvelle vie à l'application développée par le projet antérieur ou repartir de zéro 
-                    pour construire une solution sur mesure. Quelle que soit la voie choisie, notre priorité reste la 
-                    simplicité d'utilisation, la clarté et l'optimisation de notre travail, afin que demain, étudiants, 
-                    chercheurs et professionnels de santé puissent aisément emprunter le chemin que nous aurons tracé.
+                    - Intégrer cet algorithme au sein d'une interface homme-machine intuitive et accessible. 
+                </p>
+
+              <h1 id="etat-de-l-art">Etat de l'art<a hidden="" class="anchor" aria-hidden="true" href="#etat-de-l-art">#</a></h1>
+                <p>
+                    Notre revue de la littérature s'est appuyée sur des études clés, révélant les défis et les opportunités associées à l'utilisation de l'EEG dans les ICM. Nous avons examiné les méthodes pour éliminer le bruit des données EEG, telles que le filtrage temporel et spatial, ainsi que des techniques avancées comme l'analyse en composantes principales (PCA) et l'analyse en composantes indépendantes (ICA), qui nous aident à isoler les signaux pertinents.
                 </p>
                 <p>
-                    En somme, notre mission est triple : pousser les frontières de la précision dans la détection des 
-                    intentions de mouvement, ancrer notre démarche dans une rigueur scientifique exemplaire et concevoir 
-                    une interface qui transforme notre science en service, accessible à tous ceux qui, demain, 
-                    continueront à explorer, à soigner et à innover.
+                    En ce qui concerne l'extraction de caractéristiques, nous avons exploré à la fois les aspects temporels et fréquentiels des signaux EEG, ainsi que des méthodes innovantes telles que les Common Spatial Patterns (CSP) et l'analyse de la covariance dans l'espace tangentiel, enrichissant notre compréhension des données cérébrales.
+                </p> 
+                <p> 
+                    Pour la classification des signaux, nous avons évalué une variété de techniques, des approches supervisées traditionnelles comme les machines à vecteurs de support (SVM) à des méthodes plus récentes d'apprentissage profond, tout en reconnaissant la nécessité d'une recherche plus poussée pour exploiter pleinement leur potentiel dans notre domaine.
+                </p>
+
+                <h1 id="methode-et-Organisation">Méthode et Organisation<a hidden="" class="anchor" aria-hidden="true" href="#methode-et-Organisation">#</a></h1>
+                <p>
+                    Notre aventure dans le projet BCI-EEG-STROKE s'est déroulée au sein d'une équipe dynamique de six étudiants de Supaero, naviguant à travers notre dernière année d'études enrichissante. Avec des séances de travail intégrées à notre emploi du temps, chargé par les cours spécialisés, notre diversité de parcours et d'intérêts a façonné notre approche initiale. Face à des défis en neurologie, traitement des signaux EEG, et machine learning, nos débuts ont été modestes, marqués par une sous-estimation de la recherche. Guidés initialement par une suggestion technique prometteuse, nous avons réparti les tâches—extraction, prétraitement, classification, tests, et développement de l'interface utilisateur—sans saisir pleinement l'ampleur du sujet.
+
+Cette stratégie fragmentée, couplée à une réticence à embrasser pleinement les outils existants comme la bibliothèque MNE, nous a initialement ralentis, surtout face à la complexité inattendue de la prédiction des intentions de mouvement chez les patients AVC, un domaine peu exploré.
+
+La réalisation de ces obstacles nous a conduits à une réorganisation stratégique. Nous avons adopté une approche de travail en pipeline complet, permettant à chacun de plonger dans tous les aspects du projet, de l'analyse des signaux à leur classification. Simplifiant notre objectif, nous avons choisi de nous concentrer sur la détection du mouvement, en utilisant des données issues uniquement des zones affectées du cerveau. Ce pivot nous a permis de maîtriser le sujet dans son intégralité et de partager nos découvertes, enrichissant le projet de nos meilleures pratiques individuelles.
+
+Confrontés ensuite à la gestion de vastes volumes de données et aux exigences de calcul, le supercalculateur de Supaero est devenu notre allié. Nous avons développé des compétences en calcul haute performance (HPC), optimisant notre code pour tirer parti de cette puissante ressource et gérer efficacement la mémoire limitée.
+
+La dernière pièce de notre puzzle était la création d'une interface utilisateur intuitive, incorporant nos algorithmes pour une utilisation aisée par le personnel soignant. Nous avons opté pour une architecture moderne, combinant un backend FastAPI avec un frontend Streamlit, développés en parallèle de notre recherche pour une intégration fluide.
+
+En somme, malgré un démarrage hésitant et des compétences naissantes, notre capacité à nous réinventer et à collaborer a pavé la voie vers des avancées significatives en recherche et développement, illustrant la force de notre engagement et de notre adaptabilité.
                 </p>
               <h1 id="references">References<a hidden="" class="anchor" aria-hidden="true" href="#references">#</a></h1>
               <p>[1] <a href="https://arxiv.org/abs/1706.06083">“”</a>. </p>

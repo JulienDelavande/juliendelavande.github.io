@@ -1,5 +1,5 @@
 body {
-    font-family: Anonymous Pro, Courier New, Courier, monospace;
+    font-family: 'Open Sans', sans-serif;
     background-color: rgb(245, 245, 245);
 }
 
@@ -68,6 +68,31 @@ body {
 .about {
     text-align: left;
     padding-top: 1%; 
+}
+
+.project {
+    font-size: 14px;
+    margin-top: 5%;
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    transition: transform .1s;
+    border: rgb(238, 238, 238);
+}
+
+.project:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+}
+
+.optibet-link {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .contact {

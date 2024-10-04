@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site-perso
+  namespace: site-perso
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: site-perso
+  template:
+    metadata:
+      labels:
+        app: site-perso
+    spec:
+      containers:
+      - name: site-perso
+        image: delavandejulien/site-perso:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
