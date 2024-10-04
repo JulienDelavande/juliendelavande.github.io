@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="ROBOTS" content="INDEX,FOLLOW">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Julien Delavande - Teaching Poker to a Language Model</title>
+        <meta name="description" content="Teaching Poker to a Language Model: Fine-Tuning Mistral 7B to Bluff Like a Pro">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="./../../../main.css">
+        <link rel="stylesheet" href="./../../blog.css">
+        <link rel="stylesheet" href="./../article.css">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="name">
+                    <h1><a href="./../../">Julien Delavande</a></h1>
+                </div>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="./../../" class="nav-item">About</a></li>
+                        <li><a href="./../" class="nav-item nav-item-active">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <article class="post-single">
+                <header class="post-header">
+                    <h1 class="post-title">Teaching Poker to a Language Model: Fine-Tuning Mistral 7B to Bluff Like a Pro</h1>
+                    <div class="post-meta">
+                        Date: October 10, 2024 | Estimated Reading Time: 8 min | Author: Julien Delavande
+                    </div>
+                </header>
+
+                <div class="toc">
+                    <details>
+                        <summary>
+                            <span class="details">Table of Contents</span>
+                        </summary>
+                        <div class="inner-summary">
+                            <ul>
+                                <li><a href="#introduction">Introduction</a></li>
+                                <li><a href="#context">Context</a></li>
+                                <li><a href="#our-approach">Our Approach</a></li>
+                                <ul>
+                                    <li><a href="#data-preparation">Data Preparation</a></li>
+                                    <li><a href="#fine-tuning-the-model">Fine-Tuning the Model</a></li>
+                                </ul>
+                                <li><a href="#evaluation-and-results">Evaluation and Results</a></li>
+                                <ul>
+                                    <li><a href="#model-evaluation">Model Evaluation</a></li>
+                                    <li><a href="#results">Results</a></li>
+                                    <li><a href="#understanding-play-styles-through-poker-ranges">Understanding Play Styles Through Poker Ranges</a></li>
+                                </ul>
+                                <li><a href="#critiques-and-future-work">Critiques and Future Work</a></li>
+                                <ul>
+                                    <li><a href="#bet-sizing">Bet Sizing</a></li>
+                                    <li><a href="#data-diversity">Data Diversity</a></li>
+                                    <li><a href="#evaluation-metrics">Evaluation Metrics</a></li>
+                                </ul>
+                                <li><a href="#conclusion">Conclusion</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="post-content">
+                    <hr>
+
+                    <img src="images/intro_image.png" alt="Introduction Image" class="featured-image">
+                    <hr>
+                    <h2 id="introduction">Introduction</h2>
+                    <p>During the 2024 Mistral AI Fine-Tuning Hackathon, I had the incredible opportunity to collaborate with my colleagues <a href="https://github.com/SoelMgd"><strong>Soel Megdoud</strong></a> and <a href="https://github.com/SoAnVa"><strong>Anatole Vakili</strong></a> on an ambitious project: teaching an AI language model to play poker. Inspired by recent advancements in fine-tuning large language models (LLMs) for games like chess, we wondered if similar techniques could be applied to a game as complex and nuanced as poker.</p>
+                    
+                    <img src="images/model_training_on_chest.png" alt="ChatGPT 3.5 Fined tuned on Chess logs" class="featured-image">
+                    <p><em>Image: Model Training on Chess</em></p>
+
+                    <h2 id="context">Context</h2>
+                    <p>Recent research has shown that fine-tuning LLMs on standardized formats, such as Portable Game Notation (PGN) for chess, can yield remarkable results. Models have learned to:</p>
+                    <ul>
+                        <li>Play exclusively valid moves without being explicitly taught the rules.</li>
+                        <li>Adapt their playing style based on the opponent’s behavior.</li>
+                        <li>Consider the entire history of previous moves when making decisions.</li>
+                        <li>Achieve impressive ELO ratings, significantly outperforming non fine-tuned models.</li>
+                    </ul>
+                    <p>While these achievements are astounding, chess is a deterministic game with complete information, making it fundamentally different from poker. Poker is a multiplayer game with hidden information, non-deterministic outcomes, and psychological elements that heavily influence decision-making. Traditional AI approaches to poker often rely on reinforcement learning, which can be resource-intensive and complex to implement.</p>
+                    <p>This led us to a compelling question: <strong>Can an LLM learn to play poker effectively through fine-tuning alone?</strong></p>
+
+                    <h2 id="our-approach">Our Approach</h2>
+
+                    <img src="images/architecture.png" alt="Architecture" class="featured-image">
+                    <p><em>Image: Architecture</em></p>
+
+                    <h3 id="data-preparation">Data Preparation</h3>
+                    <p>To tackle this challenge, we decided to fine-tune the Mistral 7B model using historical poker data from a professional player's game history. Our dataset comprised over 8 million tokens, representing a wide array of gameplay situations.</p>
+                    <p>We designed our training data to expose the model to diverse scenarios:</p>
+                    <ul>
+                        <li><strong>Different Positions at the Table:</strong> Early, middle, and late positions have significant strategic differences in poker.</li>
+                        <li><strong>Various Game Phases:</strong> Pre-flop, post-flop, turn, and river stages each require distinct decision-making strategies.</li>
+                        <li><strong>Hand Strengths and Combinations:</strong> From weak to strong hands, suited and off-suited cards, and everything in between.</li>
+                    </ul>
+                    <p>By truncating poker hands at various stages and prompting the LLM to predict the next action, we aimed to teach the model not just the rules of poker, but also the subtleties of strategic play.</p>
+                    <p>Here’s an example of a prompt where the LLM is asked to act first post-flop:</p>
+                    <pre>
+Seat 7 is the button
+Seat 1: BIGRAISE (174.47).
+Seat 3: cracypoker (231.55).
+Seat 5: bjv1105 (522.98).
+Seat 6: IlxxxlI (80).
+Seat 7: WalterBlack (125).
+Player TheFront7 has small blind (2)
+Player BIGRAISE has big blind (4)
+Player BIGRAISE received a card.
+Player BIGRAISE received a card.
+Player cracypoker received a card.
+Player cracypoker received a card.
+Player bjv1105 received a card.
+Player bjv1105 received a card.
+Player IlxxxlI received card: [Qc]
+Player IlxxxlI received card: [Jh]
+Player WalterBlack received a card.
+Player WalterBlack received a card.
+Player cracypoker folds
+Player bjv1105 folds
+Player IlxxxlI calls (4)
+Player WalterBlack calls (4)
+Player BIGRAISE checks
+*** FLOP ***: [10s Ac Ad]
+Player IlxxxlI
+                    </pre>
+
+                    <h3 id="fine-tuning-the-model">Fine-Tuning the Model</h3>
+                    <p>We fine-tuned the Mistral 7B model, which is a large language model known for its versatility and efficiency. The fine-tuning process involved training the model on our prepared dataset, allowing it to learn the patterns and strategies inherent in professional poker play.</p>
+
+                    <h2 id="evaluation-and-results">Evaluation and Results</h2>
+
+                    <h3 id="model-evaluation">Model Evaluation</h3>
+                    <p>To assess the effectiveness of our fine-tuned model, which we named <strong>MistralBluff</strong>, we evaluated it on a test set using the following metrics:</p>
+                    <ul>
+                        <li><strong>Ratio of Legal Moves:</strong>
+                            <pre>
+Ratio of Legal Moves = Number of Legal Moves / Number of Moves Played
+                            </pre>
+                            This metric checks whether the model adheres to the rules of poker, such as not attempting to check when a call is required after a raise.
+                        </li>
+                        <li><strong>Accuracy:</strong>
+                            <pre>
+Accuracy = Number of Moves Matching the Professional Player / Number of Moves Played
+                            </pre>
+                            This measures how well the model replicates the decision-making of a professional player.
+                        </li>
+                    </ul>
+                    <p>As a baseline, we also tested <strong>ChatGPT 3.5</strong> (a non-fine-tuned model) on the same test set, adapting the prompts to clarify the task.</p>
+
+                    <h3 id="results">Results</h3>
+                    <p><strong>MistralBluff</strong> demonstrated remarkable performance. Below are the confusion matrices for both MistralBluff and ChatGPT 3.5 on the test set:</p>
+
+                    <h4>MistralBluff Results:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>bets</th>
+                                <th>calls</th>
+                                <th>raises</th>
+                                <th>allin</th>
+                                <th>checks</th>
+                                <th>folds</th>
+                                <th>caps</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>bets</th>
+                                <td>16</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>20</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>calls</th>
+                                <td>0</td>
+                                <td>38</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>59</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>raises</th>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>45</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>46</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>allin</th>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>6</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>checks</th>
+                                <td>8</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>151</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>folds</th>
+                                <td>0</td>
+                                <td>19</td>
+                                <td>15</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>3017</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>caps</th>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>ChatGPT 3.5 Results:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>bets</th>
+                                <th>calls</th>
+                                <th>raises</th>
+                                <th>allin</th>
+                                <th>checks</th>
+                                <th>folds</th>
+                                <th>caps</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>bets</th>
+                                <td>14</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>8</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>calls</th>
+                                <td>0</td>
+                                <td>16</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>raises</th>
+                                <td>0</td>
+                                <td>3</td>
+                                <td>45</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>allin</th>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>checks</th>
+                                <td>36</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>44</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>folds</th>
+                                <td>7</td>
+                                <td>87</td>
+                                <td>15</td>
+                                <td>0</td>
+                                <td>48</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>caps</th>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>MistralBluff</strong> achieved an accuracy of <strong>94.5%</strong>, compared to <strong>3.5%</strong> for ChatGPT. Additionally, MistralBluff had a <strong>100% legal moves ratio</strong>, whereas ChatGPT only had <strong>12.5%</strong>. These results indicate that fine-tuning significantly improved the model's understanding of poker rules and strategies.</p>
+
+                    <h3 id="understanding-play-styles-through-poker-ranges">Understanding Play Styles Through Poker Ranges</h3>
+                    <p>To delve deeper into how well MistralBluff learned professional strategies, we analyzed its <strong>opening ranges</strong>—the hands it chooses to play aggressively in various positions.</p>
+
+                    <h4>Early Positions: Under the Gun (UTG)</h4>
+                    <p>In early positions like UTG, players must be more conservative. Comparing MistralBluff's opening range to that of a professional player, we found a striking similarity, indicating that the model understands the need for selectivity in these positions.</p>
+                    <p><img src="images/professionnal_player_utg_range.png" alt="Professional Player UTG Range"></p>
+                    <p><em>Figure 1: Professional Player's UTG Opening Range</em></p>
+                    <p><img src="images/professionnal_player_utg_range.png" alt="MistralBluff UTG Range"></p>
+                    <p><em>Figure 2: MistralBluff's UTG Opening Range</em></p>
+                    <p><strong>Both ranges are remarkably similar, indicating that MistralBluff has a good understanding of poker.</strong></p>
+
+                    <h4>Late Positions: Big Blind (BB)</h4>
+                    <p>In late positions like the BB, players can afford to be more aggressive with a wider range of hands. Again, MistralBluff's opening range closely mirrored that of a professional, recognizing the increased value of suited hands and the importance of table position.</p>
+                    <p><img src="images/professionnal_player_bb_opening_range.png" alt="Professional Player BB Range"></p>
+                    <p><em>Figure 3: Professional Player's BB Opening Range</em></p>
+                    <p><img src="images/mistralbluff_bb_openraise_range.png" alt="MistralBluff BB Range"></p>
+                    <p><em>Figure 4: MistralBluff's BB Opening Range</em></p>
+                    <p><strong>This comparison highlights that MistralBluff recognizes the importance of table position when determining opening ranges.</strong></p>
+                    <p>Furthermore, it shows an awareness that <strong>suited hands have more value</strong>. Overall, MistralBluff’s style closely mirrors that of professional players, demonstrating its capability to adapt to the dynamics of the game.</p>
+
+                    <h2 id="critiques-and-future-work">Critiques and Future Work</h2>
+
+                    <p>While MistralBluff's performance is promising, there are areas where improvements can be made:</p>
+
+                    <h3 id="bet-sizing">Bet Sizing</h3>
+                    <p>MistralBluff currently struggles with determining appropriate bet sizes, often failing to adjust bets relative to the pot size. Future work could involve integrating external functions or simple rules to enhance its bet-sizing capabilities.</p>
+
+                    <h3 id="data-diversity">Data Diversity</h3>
+                    <p>Our model was trained on data from a single professional player, which may limit its exposure to diverse playing styles and strategies. Expanding the dataset to include multiple players could provide a more well-rounded training experience.</p>
+
+                    <h3 id="evaluation-metrics">Evaluation Metrics</h3>
+                    <p>Assessing a poker AI's skill level is inherently challenging due to the lack of straightforward metrics like an ELO score. Further evaluation across multiple online games and the development of more nuanced performance metrics would be beneficial.</p>
+
+                    <h2 id="conclusion">Conclusion</h2>
+                    <p>Our journey into teaching an LLM to play poker has been both challenging and rewarding. Through fine-tuning Mistral 7B, we've demonstrated that it's possible for a language model to learn complex, strategic gameplay in a domain characterized by hidden information and psychological nuance.</p>
+                    <p>Working alongside <a href="https://github.com/SoelMgd"><strong>Soel Megdoud</strong></a> and <a href="https://github.com/SoAnVa"><strong>Anatole Vakili</strong></a> has been an inspiring experience, and we're excited about the possibilities this opens up for future research in AI and game strategy. By addressing the areas for improvement, we hope to refine MistralBluff further, perhaps even to the point where it can compete with human players at a professional level.</p>
+
+                </div>
+
+                <footer class="post-footer">
+                    <ul class="post-tags">
+                        <li><a href="#">AI</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#">Poker</a></li>
+                        <li><a href="#">LLM</a></li>
+                        <li><a href="#">Fine-Tuning</a></li>
+                    </ul>
+                    <div class="share-buttons">
+                        <a href="#" aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Share on LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="Share on Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </footer>
+            </article>
+        </main>
+    </body>
+</html>

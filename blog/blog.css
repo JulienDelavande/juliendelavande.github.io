@@ -1,11 +1,12 @@
+/* Style des articles */
 .post-entry {
-    position: relative;
-    background: rgb(255, 255, 255);
+    background-color: #fff;
     padding: 24px;
     margin-bottom: 24px;
     border-radius: 8px;
-    transition: transform .1s;
-    border: rgb(238, 238, 238);
+    border: 1px solid #eee;
+    position: relative;
+    transition: transform .1s ease, box-shadow .1s ease;
 }
 
 .post-entry:hover {
@@ -13,14 +14,99 @@
     transform: scale(1.01);
 }
 
-.entry-footer {
-    font-size: 13px;
-}
-
+/* Rendre la section entière cliquable */
 .entry-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+
+.entry-header h2 a {
+    text-decoration: none;
+    color: #333;
+    z-index: 20;
+}
+
+/* Garder la même structure pour les descriptions */
+.entry-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    z-index: 20;
+}
+
+/* Pied de page */
+.entry-footer {
+    margin-top: 15px;
+    color: #999;
+    font-size: 14px;
+    z-index: 20;
+}
+
+/* Pied de page - ajout de la section des boutons de partage */
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: 20;
+}
+
+.share-buttons a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #6c6c6c;
+    transition: transform .2s;
+}
+
+.share-buttons a:hover {
+    transform: scale(1.1);
+    color: #007BFF;
+}
+
+/* Style du bouton */
+.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Design réactif */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .entry-header h2 {
+        font-size: 24px;
+    }
+
+    .entry-content p {
+        font-size: 14px;
+    }
+
+    .share-buttons a {
+        font-size: 20px;
+    }
 }

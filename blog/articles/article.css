@@ -113,3 +113,10 @@ a {
     fill: currentColor;
     transition: transform .1s;
 }
+
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,54 +1,61 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta name="ROBOTS" content="INDEX,FOLLOW">
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Julien Delavande</title>
-        <meta name="description" content="Julien Delavande's homepage">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" href="main.css">
-        <link rel="icon" href="img/favicon.png" type="image/x-icon">
-    </head>
-    <body>
-        <div class="name">
-            <h1 >Julien <br>Delavande</h1>
-            <a href="." class="name-link"></a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julien Delavande</title>
+    <meta name="description" content="Julien Delavande's homepage">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <!-- Font Awesome Icons -->
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="name">
+                <h1><a href=".">Julien <br>Delavande</a></h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./" class="nav-item nav-item-active">About</a></li>
+                    <li><a href="./blog/" class="nav-item">Blog</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="navbar">
-            <a href="./" class="nav-item nav-item-active">About</a>
-            <a href="./blog/" class="nav-item">Blog</a>
-        </div>                   
-        <div class="inner">
-            <div class="about">
-                <h1>👋 Welcome to Julien's log</h1>
-                <p>Engineering student in and Data Science just graduated from ISAE-SUPAERO currently studying at ENS Paris Saclay attending the MVA master.</p>
-                <p>Passionate about inovation in AI and data challenges.</p>
-            </div>
-            <div class="project">
-                <h3>📈 Project: Optimizing Gains in Sports Betting</h3>
-                <p>Try my latest project on optimizing bankroll allocation in sports betting, using machine learning and data-driven strategies (deployed on my k8s).</p>
-                <a class="optibet-link" href="https://optibet.delavande.fr/" target="_blank" ></a>
-                <p></p><a class="optibet-link" href="https://optibet.delavande.fr/" target="_blank" >Try it out!</a></p>
-            </div>
-            <div class="contact">
-                <p>
-                    <a href="mailto:julien.delavande@student.isae-supaero.fr">
-                        <i class="far fa-envelope icon" title="email"></i></a>
-                    &nbsp;
-                    <a href="https://github.com/juliendelavande/" target="_blank">
-                        <i class="fab fa-github icon" title="@juliendelavnde"></i></a>
-                    &nbsp;
-                    <a href="https://www.linkedin.com/in/juliendelavande/" target="_blank">
-                        <i class="fab fa-linkedin icon" title="linkedin"></i></a>
-                    &nbsp;
-                    <a href="data/Julien_Delavande_CV.pdf" target="_blank">
-                        <i class="fas fa-file icon" title="CV"></i></a>
-                </p>
-            </div>
-        </div>
-    </body>
+    </header>
+    <main class="container">
+        <section class="about">
+            <h1>👋 Welcome to Julien's log</h1>
+            <p>Data Science engineering student, graduate from ISAE-SUPAERO, currently studying at ENS Paris Saclay in the MVA master program.</p>
+            <p>Passionate about innovation in AI and data-driven challenges.</p>
+            <p>
+                <a href="mailto:julien.delavande@student.isae-supaero.fr">
+                    <i class="far fa-envelope icon" title="Email"></i>
+                </a>
+                <a href="https://github.com/juliendelavande/" target="_blank">
+                    <i class="fab fa-github icon" title="GitHub"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/juliendelavande/" target="_blank">
+                    <i class="fab fa-linkedin icon" title="LinkedIn"></i>
+                </a>
+                <a href="data/Julien_Delavande_CV.pdf" target="_blank">
+                    <i class="fas fa-file icon" title="CV"></i>
+                </a>
+            </p>
+        </section>
+        <section class="project">
+            <h3>📈 Project: Optimizing Gains in Sports Betting</h3>
+            <p>Check out my latest project on optimizing bankroll allocation in sports betting, using machine learning and data-driven strategies (deployed on my Kubernetes cluster).</p>
+            <a class="project-link" href="https://optibet.delavande.fr/" target="_blank"></a>
+        </section>
+
+    </main>
+    <footer class="container">
+        <!-- Footer content if needed -->
+    </footer>
+</body>
 </html>

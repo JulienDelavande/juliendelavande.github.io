@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="ROBOTS" content="INDEX,FOLLOW">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Julien Delavande - Article</title>
+        <meta name="description" content="Julien Delavande's article">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="./../../../main.css">
+        <link rel="stylesheet" href="./../../blog.css">
+        <link rel="stylesheet" href="./../article.css">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="name">
+                    <h1><a href="./../../">Julien Delavande</a></h1>
+                </div>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="./../../" class="nav-item">About</a></li>
+                        <li><a href="./../" class="nav-item nav-item-active">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <article class="post-single">
+                <header class="post-header">
+                    <h1 class="post-title">Betting on Data: How to Build a Winning Football Prediction Model</h1>
+                    <div class="post-meta">
+                        Date: October 4, 2024 | Estimated Reading Time: 10 min | Author: Julien Delavande
+                    </div>
+                    <h3>Try it out: 
+                        <a href="https://optibet.delavande.fr/" target="_blank" class="btn-link">
+                            OptiSportBet
+                        </a>
+                    </h3>
+                    
+                </header>
+
+                <div class="toc">
+                    <details>
+                        <summary>
+                            <span class="details">Table of Contents</span>
+                        </summary>
+                        <div class="inner-summary">
+                            <ul>
+                                <li><a href="#introduction">Introduction</a></li>
+                                <li><a href="#the-allure-of-predicting-football-matches">The Allure of Predicting Football Matches</a></li>
+                                <li><a href="#our-approach-combining-data-science-with-betting-strategies">Our Approach: Combining Data Science with Betting Strategies</a></li>
+                                <li><a href="#building-the-predictive-model">Building the Predictive Model</a>
+                                    <ul>
+                                        <li><a href="#data-collection-the-foundation">Data Collection: The Foundation</a></li>
+                                        <li><a href="#feature-selection-finding-the-signal-in-the-noise">Feature Selection: Finding the Signal in the Noise</a></li>
+                                        <li><a href="#model-training-choosing-the-right-algorithm">Model Training: Choosing the Right Algorithm</a></li>
+                                        <li><a href="#handling-temporal-data-cross-validation-with-care">Handling Temporal Data: Cross-Validation with Care</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#optimizing-betting-strategies">Optimizing Betting Strategies</a>
+                                    <ul>
+                                        <li><a href="#the-concept-of-utility">The Concept of Utility</a></li>
+                                        <li><a href="#strategies-we-explored">Strategies I Explored</a></li>
+                                        <li><a href="#simulations-testing-the-strategies">Simulations: Testing the Strategies</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#real-world-testing">Real-World Testing</a>
+                                    <ul>
+                                        <li><a href="#online-testing-phase">Online Testing Phase</a></li>
+                                        <li><a href="#interpretation">Interpretation</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#deploying-the-system-from-code-to-cloud">Deploying the System: From Code to Cloud</a>
+                                    <ul>
+                                        <li><a href="#microservices-architecture">Microservices Architecture</a></li>
+                                        <li><a href="#containerization-with-docker">Containerization with Docker</a></li>
+                                        <li><a href="#orchestration-with-kubernetes">Orchestration with Kubernetes</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#challenges-and-lessons-learned">Challenges and Lessons Learned</a></li>
+                                <li><a href="#whats-next">What's Next?</a></li>
+                                <li><a href="#conclusion">Conclusion</a></li>
+                                <li><a href="#for-the-data-scientists">For the Data Scientists</a></li>
+                                <li><a href="#final-thoughts">Final Thoughts</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="post-content">
+                    <p><em>Unlocking the secrets of football betting with data science and utility optimization</em></p>
+
+                    <hr>
+
+                    <img src="image/foot_image.png" alt="Football and Data Science" class="responsive-img">
+                    <hr>
+
+                    <h2 id="introduction">Introduction</h2>
+
+                    <p>Imagine standing in a bustling stadium, the roar of the crowd echoing around you. The excitement is palpable as your favorite team steps onto the pitch. Now, imagine if you could predict the outcome of the match with a high degree of accuracy. What if you could not only enjoy the thrill of the game but also profit from it?</p>
+
+                    <p>This is the world where data science meets sports betting. Over the past few months, I've embarked on an ambitious project: to build a predictive model for football matches that could optimize betting strategies and maximize gains. This journey took us deep into the realms of machine learning, probability, and optimization algorithms. And today, I're excited to share our story with you.</p>
+
+                    <p>Whether you're a football enthusiast curious about how data can predict match outcomes, a budding data scientist eager to see real-world applications of machine learning, or an experienced professional interested in utility optimization, there's something here for you.</p>
+
+                    <hr>
+
+                    <h2 id="the-allure-of-predicting-football-matches">The Allure of Predicting Football Matches</h2>
+
+                    <p>Football isn't just a game; it's a global phenomenon. Every week, millions of fans watch matches, analyze team performances, and discuss strategies. And with the rise of sports betting, predicting match outcomes has become both an art and a science.</p>
+
+                    <p>But why is predicting football matches so challenging?</p>
+
+                    <ul>
+                        <li><strong>Complex Dynamics</strong>: Football is influenced by countless factors—player form, injuries, weather conditions, team morale, and even referee decisions.</li>
+                        <li><strong>Uncertainty and Variability</strong>: Upsets happen. Underdogs win. A red card can change everything.</li>
+                        <li><strong>Data Overload</strong>: There's an abundance of data available, but making sense of it requires sophisticated tools.</li>
+                    </ul>
+
+                    <p>I set out to tackle these challenges head-on, leveraging data science to bring clarity to the chaos.</p>
+
+                    <hr>
+
+                    <h2 id="our-approach-combining-data-science-with-betting-strategies">Our Approach: Combining Data Science with Betting Strategies</h2>
+
+                    <p>At the core of our project were two main objectives:</p>
+
+                    <ol>
+                        <li><strong>Build an Accurate Predictive Model</strong>: Use historical data to predict the probabilities of match outcomes—home win, draw, or away win.</li>
+                        <li><strong>Optimize Betting Strategies</strong>: Determine the optimal amount to wager on each bet to maximize growth while minimizing risk.</li>
+                    </ol>
+
+                    <p>Let's dive into how I approached each of these.</p>
+
+                    <hr>
+
+                    <h2 id="building-the-predictive-model">Building the Predictive Model</h2>
+
+                    <h3 id="data-collection-the-foundation">Data Collection: The Foundation</h3>
+
+                    <p>I started by gathering a rich dataset:</p>
+
+                    <ul>
+                        <li><strong>Historical Match Data</strong>: Over 28,000 matches from 2006 onwards, covering top European leagues and international competitions.</li>
+                        <li><strong>Team Statistics</strong>: Detailed metrics from <a href="https://sofifa.com/">SoFIFA</a>, including player ratings, team strengths, and tactical preferences.</li>
+                        <li><strong>Betting Odds</strong>: Real-time and historical odds from various bookmakers via APIs and web scraping.</li>
+                    </ul>
+
+                    <p>These data sources provided a solid foundation for our predictive model, allowing us to capture various aspects influencing match outcomes.</p>
+
+                    <h3 id="feature-selection-finding-the-signal-in-the-noise">Feature Selection: Finding the Signal in the Noise</h3>
+
+                    <p>With over 90 features to consider, I needed to identify which ones truly impacted match outcomes. I used a method called <strong>forward selection</strong> with logistic regression:</p>
+
+                    <ol>
+                        <li><strong>Start with No Features</strong>: Begin with an empty model.</li>
+                        <li><strong>Iteratively Add Features</strong>: At each step, add the feature that most improves the model based on Mean Squared Error (MSE).</li>
+                        <li><strong>Evaluate Performance</strong>: Use cross-validation to ensure the model generalizes well to unseen data.</li>
+                    </ol>
+
+                    <p>Some of the most impactful features included:</p>
+
+                    <ul>
+                        <li><strong>Elo Ratings</strong>: A measure of a team's strength based on historical performance.</li>
+                        <li><strong>Team Overalls</strong>: Aggregate player ratings reflecting the overall quality of the team.</li>
+                        <li><strong>Average Goals Scored/Conceded</strong>: Simple yet powerful indicators of offensive and defensive capabilities.</li>
+                    </ul>
+
+                    <p>We can visualized the impact of these features on our model's performance:</p>
+
+                    <img src="image/feature_selection_metrics_by_nb_of_features.png" alt="Metrics of interest as a function of the number of features added" class="responsive-img">
+
+                    <p><em>Figure: Metrics of interest as a function of the number of features added</em></p>
+
+                    <h3 id="model-training-choosing-the-right-algorithm">Model Training: Choosing the Right Algorithm</h3>
+
+                    <p>After feature selection, we can compared various classification models:</p>
+
+                    <ul>
+                        <li><strong>Logistic Regression</strong>: Simple and interpretable.</li>
+                        <li><strong>Random Forests</strong>: Captures nonlinear relationships.</li>
+                        <li><strong>Gradient Boosting</strong>: Often performs well with less data preprocessing.</li>
+                    </ul>
+
+                    <p><strong>Logistic Regression</strong> emerged as the best performer, balancing accuracy with interpretability. It allowed us to understand how each feature influenced the probability of different outcomes.</p>
+
+                    <p>We can also analyzed the importance of each feature:</p>
+
+                    <img src="image/top20_coeff_importance_lr_selected_features_home.png" alt="Coefficients of the Logistic Regression Model for Home win class" class="responsive-img">
+
+                    <p><em>Figure: Coefficients of the Logistic Regression Model for Home win class</em></p>
+
+                    <h3 id="handling-temporal-data-cross-validation-with-care">Handling Temporal Data: Cross-Validation with Care</h3>
+
+                    <p>Football data is time-dependent. Training a model on future data to predict past matches would be cheating!</p>
+
+                    <p>We can use <strong>expanding window cross-validation</strong>:</p>
+
+                    <ul>
+                        <li><strong>Start with an Initial Training Period</strong>: Train on the earliest matches.</li>
+                        <li><strong>Expand Over Time</strong>: At each iteration, include more recent matches in the training set.</li>
+                        <li><strong>Test Sequentially</strong>: Always test on matches that occurred after the training data.</li>
+                    </ul>
+
+                    <p>This method respects the chronological order of matches and ensures our model's predictions are realistic.</p>
+
+                    <p>We can observe the impact of regular retraining on model performance:</p>
+
+                    <img src="image/model_ratrining_mse_120rd.png" alt="Model MSE rolling average over time" class="responsive-img">
+
+                    <p><em>Figure: Model MSE rolling average over time</em></p>
+
+                    <hr>
+
+                    <h2 id="optimizing-betting-strategies">Optimizing Betting Strategies</h2>
+
+                    <p>Predicting match outcomes is only half the battle. The real question is: <strong>How much should we bet on each outcome?</strong></p>
+
+                    <h3 id="the-concept-of-utility">The Concept of Utility</h3>
+
+                    <p>In betting, it's not just about maximizing expected returns but also managing risk. This is where <strong>utility functions</strong> come in. They help quantify the bettor's preferences regarding risk and reward.</p>
+
+                    <h3 id="strategies-I-explored">Strategies I Explored</h3>
+
+                    <ol>
+                        <li><strong>Kelly Criterion</strong>: Maximizes the logarithm of wealth, balancing growth and risk.</li>
+                        <li><strong>Log Utility Strategy</strong>: Similar to Kelly but focuses on expected logarithmic utility.</li>
+                        <li><strong>Exponential Utility Strategy</strong>: Incorporates risk aversion directly into the utility function.</li>
+                        <li><strong>Linear Utility Strategy</strong>: Balances expected returns and variance.</li>
+                        <li><strong>Naive Strategy</strong>: Bet on the most likely outcome based on bookmaker odds.</li>
+                    </ol>
+
+                    <h3 id="simulations-testing-the-strategies">Simulations: Testing the Strategies</h3>
+
+                    <p>I conducted <strong>Monte Carlo simulations</strong> to evaluate each strategy under various scenarios:</p>
+
+                    <ul>
+                        <li>Simulated match outcomes based on true probabilities.</li>
+                        <li>Introduced biases and noise to mimic real-world uncertainties.</li>
+                        <li>Calculated final bankrolls, growth rates, and risk metrics.</li>
+                    </ul>
+
+                    <p>Simulation results showed the performance of each strategy:</p>
+
+                    <img src="image/monte_carlo_b=b.png" alt="Monte Carlo simulations for each strategy" class="responsive-img">
+
+
+                    <p><em>Figure: Monte Carlo simulations for each strategy</em></p>
+
+                    <p><strong>Findings</strong>:</p>
+
+                    <ul>
+                        <li><strong>Kelly Criterion and Exponential Utility</strong> strategies provided strong returns while managing risk effectively.</li>
+                        <li><strong>Naive Strategy</strong> underperformed, highlighting the importance of sophisticated bankroll management.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="real-world-testing">Real-World Testing</h2>
+
+                    <p>Simulations are great, but how do these strategies hold up in the real world?</p>
+
+                    <h3 id="online-testing-phase">Online Testing Phase</h3>
+
+                    <p>I tested our system over five weeks, focusing on matches from the top five European leagues.</p>
+
+                    <p><strong>Results</strong>:</p>
+
+                    <p>The capital evolution for each strategy during the testing period is shown below:</p>
+
+                    <img src="image/bankroll_evolution2.png" alt="Capital Evolution for Each Strategy During the Online Testing Period" class="responsive-img">
+
+                    <p><em>Figure: Capital Evolution for Each Strategy During the Online Testing Period</em></p>
+
+                    <ul>
+                        <li><strong>Kelly Criterion and Exponential Utility</strong> strategies nearly doubled the initial bankroll.</li>
+                        <li><strong>Linear Utility Strategy</strong> showed steady growth with minimal volatility.</li>
+                        <li><strong>Naive Strategy</strong> led to capital depletion.</li>
+                    </ul>
+
+                    <h3 id="interpretation">Interpretation</h3>
+
+                    <p>Advanced strategies that balance risk and reward significantly outperform simplistic approaches. By leveraging accurate probability estimates and optimizing bet sizes, we can achieve superior returns.</p>
+
+                    <hr>
+
+                    <h2 id="deploying-the-system-from-code-to-cloud">Deploying the System: From Code to Cloud</h2>
+
+                    <h3 id="microservices-architecture">Microservices Architecture</h3>
+
+                    <p>A microservices approach was adopted, breaking the system into independent components:</p>
+
+                    <ul>
+                        <li><strong>Data Collection Service</strong>: Gathers and preprocesses data.</li>
+                        <li><strong>Prediction Service</strong>: Trains models and generates probability estimates.</li>
+                        <li><strong>Optimization Service</strong>: Calculates optimal bet allocations.</li>
+                        <li><strong>User Interface</strong>: Provides a dashboard for users.</li>
+                    </ul>
+
+                    <h3 id="containerization-with-docker">Containerization with Docker</h3>
+
+                    <p>Each service was containerized using Docker, ensuring consistency across development and production environments.</p>
+
+                    <h3 id="orchestration-with-kubernetes">Orchestration with Kubernetes</h3>
+
+                    <p>The system was deployed on Azure Kubernetes Service (AKS):</p>
+
+                    <ul>
+                        <li><strong>Scalability</strong>: Handles increased load by scaling services.</li>
+                        <li><strong>Resilience</strong>: Manages failures and restarts services automatically.</li>
+                        <li><strong>Ease of Deployment</strong>: Simplifies the process of rolling out updates.</li>
+                    </ul>
+
+                    <p>The architecture of the deployed system is illustrated below:</p>
+
+                    <img src="image/diagrem_archi_services.png" alt="Architecture of the system deployed on AKS" class="responsive-img">
+
+                    <p><em>Figure: Architecture of the system deployed on AKS</em></p>
+
+                    <hr>
+
+                    <h2 id="challenges-and-lessons-learned">Challenges and Lessons Learned</h2>
+
+                    <p>No project is without its hurdles. Here are some key challenges I faced:</p>
+
+                    <ul>
+                        <li><strong>Data Quality</strong>: Ensuring the data was clean, consistent, and up-to-date required significant effort.</li>
+                        <li><strong>Model Overfitting</strong>: Balancing model complexity to avoid overfitting while capturing essential patterns.</li>
+                        <li><strong>Market Dynamics</strong>: Accounting for changes in team performance, injuries, and other unpredictable factors.</li>
+                        <li><strong>Risk Management</strong>: Developing strategies that manage risk effectively over the long term.</li>
+                    </ul>
+
+                    <p><strong>Key Takeaways</strong>:</p>
+
+                    <ul>
+                        <li><strong>Continuous Learning</strong>: Regular model retraining is crucial in a dynamic environment.</li>
+                        <li><strong>Risk vs. Reward</strong>: Sophisticated utility-based strategies significantly outperform naive approaches.</li>
+                        <li><strong>Infrastructure Matters</strong>: A robust deployment pipeline ensures the system can operate reliably in real-world conditions.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="whats-next">What's Next?</h2>
+
+                    <p>While we've made significant strides, there's always room for improvement:</p>
+
+                    <ul>
+                        <li><strong>Incorporate More Features</strong>: Integrate additional data sources like player injuries, Iather conditions, and social media sentiment.</li>
+                        <li><strong>Advanced Models</strong>: Explore deep learning techniques or ensemble methods to capture complex patterns.</li>
+                        <li><strong>Dynamic Risk Preferences</strong>: Adjust risk parameters based on market conditions or bettor's changing preferences.</li>
+                        <li><strong>Long-Term Testing</strong>: Conduct extended real-world testing across multiple seasons and leagues.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="conclusion">Conclusion</h2>
+
+                    <p>Our journey into the world of football betting and data science has been both challenging and rewarding. By combining accurate predictive models with optimized betting strategies, I've shown that it's possible to achieve superior returns while managing risk effectively.</p>
+
+                    <p>But beyond the numbers and algorithms, this project highlights the power of data-driven decision-making. Whether in sports, finance, or any other field, leveraging data intelligently can unlock new opportunities and insights.</p>
+
+                    <hr>
+
+                    <h2 id="for-the-data-scientists">For the Data Scientists</h2>
+
+                    <p>For those eager to delve deeper:</p>
+
+                    <ul>
+                        <li><strong>Model Details</strong>: We used logistic regression with forward feature selection, prioritizing interpretability and performance.</li>
+                        <li><strong>Utility Functions</strong>: Explored various utility functions to model different risk preferences.</li>
+                        <li><strong>Optimization Algorithms</strong>: Implemented optimization using Sequential Least Squares Programming (SLSQP) and Trust-Region Constrained Algorithm (trust-constr).</li>
+                        <li><strong>Deployment Stack</strong>: Leveraged Docker, Kubernetes, and Azure for scalable deployment.</li>
+                    </ul>
+
+                    <p>Feel free to reach out or comment if you'd like to discuss the technical aspects in more detail!</p>
+
+                    <hr>
+
+                    <h2 id="final-thoughts">Final Thoughts</h2>
+
+                    <p>Whether you're a football fan, a data enthusiast, or someone intrigued by the world of sports betting, I hope this story has offered you valuable insights.</p>
+
+                    <p>As the saying goes, "Knowledge is power." And in our case, data is the key to unlocking that power.</p>
+
+                    <hr>
+
+                    <p><em>Thank you for joining us on this journey. May your bets be ever in your favor!</em></p>
+                </div>
+
+                <footer class="post-footer">
+                    <ul class="post-tags">
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#">Sports Betting</a></li>
+                    </ul>
+                    <div class="share-buttons">
+                        <a href="#" aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Share on LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="Share on Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </footer>
+            </article>
+        </main>
+    </body>
+</html>
