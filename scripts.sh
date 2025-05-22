@@ -1,5 +1,5 @@
-docker build --no-cache -t delavandejulien/site-perso:1.1 .
-docker push delavandejulien/site-perso:1.1
+docker build --no-cache -t juliendelavande/site-perso:1.2 .
+docker push juliendelavande/site-perso:1.2
 
 #kubectl apply -f k8s/
 
