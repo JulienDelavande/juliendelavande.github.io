@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research – Julien Delavande</title>
+  <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:visited {
+      color: inherit;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .paper-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-height: 180px;
+    }
+
+    .paper-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .paper-card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .paper-card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="name">
+        <h1><a href="./">Julien <br>Delavande</a></h1>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="./" class="nav-item">About</a></li>
+          <li><a href="./blog/" class="nav-item">Blog</a></li>
+          <li><a href="./research.html" class="nav-item nav-item-active">Research</a></li>
+          <li><a href="./contact.html" class="nav-item">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="about">
+      <h1>📄 Selected Research</h1>
+      <p>Some research projects I have worked on.</p>
+    </section>
+
+    <div class="research-grid">
+
+      <a href="data/Altegrad_report.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🧮 Graph Generation via Text</h3>
+          <p>Generating graph structures from natural language statistics (Altegrad Challenge).</p>
+        </div>
+      </a>
+
+      <a href="data/Bayesian_Ml_report.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>📊 Bayesian ReLU Confidence</h3>
+          <p>Improving calibration with Laplace approximations and closed-form corrections.</p>
+        </div>
+      </a>
+
+      <a href="data/Generative_Classifiers_project_report.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🛡️ Robustness of Generative Classifiers</h3>
+          <p>Evaluating robustness under adversarial attacks like FGSM, PGD, CW.</p>
+        </div>
+      </a>
+
+      <a href="data/LLM_Poker_MVA.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🃏 Poker with Transformers</h3>
+          <p>Exploring LLMs for strategic decision-making in poker environments.</p>
+        </div>
+      </a>
+
+      <a href="data/Mini_Project__ML_for_Time_Series____MVA_2024_2025.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🌐 Graphs for COVID Forecasting</h3>
+          <p>Learning graph topologies for improved time-series prediction.</p>
+        </div>
+      </a>
+
+      <a href="data/rapport_Mallah_challenge.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🚉 Train Delay Prediction</h3>
+          <p>Data challenge with SNCF on real-time train delay forecasting.</p>
+        </div>
+      </a>
+
+      <a href="data/TokenCompose_project_report.pdf" target="_blank">
+        <div class="paper-card">
+          <h3>🎨 TokenCompose: Guided Diffusion</h3>
+          <p>Improving text-to-image alignment with token-level supervision.</p>
+        </div>
+      </a>
+
+      <a href="data/master_thesis_julien_delavande_supaero.pdf" target="_blank">
+        <div class="paper-card">
+            <h3>🏟️ Optimized Sports Betting System</h3>
+            <p>Utility-based bankroll allocation and real-time deployment on Kubernetes (AKS).</p>
+        </div>
+        </a>
+
+
+      <a href="data/PIE_Rapport_technique_final.pdf" target="_blank">
+        <div class="paper-card">
+            <h3>🧠 EEG-Stroke: Intention Detection for Rehab</h3>
+            <p>Detection of movement intention in EEG for neurofeedback rehab (CHU Toulouse).</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="container">
+    <!-- Optional footer -->
+  </footer>
+</body>
+</html>
