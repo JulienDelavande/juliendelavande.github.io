@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6GBB2TQM4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S6GBB2TQM4');
+</script>
+    <head>
+        <meta name="ROBOTS" content="INDEX,FOLLOW">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Julien Delavande - Article</title>
+        <meta name="description" content="Julien Delavande's article">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="./../../../main.css">
+        <link rel="stylesheet" href="./../../blog.css">
+        <link rel="stylesheet" href="./../article.css">
+        <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="name">
+                    <h1><a href="./../../../">Julien Delavande</a></h1>
+                </div>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="./../../../" class="nav-item">About</a></li>
+                        <li><a href="./../../" class="nav-item nav-item-active">Blog</a></li>
+                        <li><a href="./../../../research.html" class="nav-item">Research</a></li>
+                        <li><a href="./../../../contact.html" class="nav-item">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <article class="post-single">
+                <header class="post-header">
+                    <h1 class="post-title">Breathless: My Research Internship Hunt</h1>
+                    <div class="post-meta">
+                        Date: October 1, 2025 | Estimated Reading Time: 12 min | Author: Julien Delavande
+                    </div>
+                </header>
+
+                <div class="toc">
+                    <details>
+                        <summary>
+                            <span class="details">Table of Contents</span>
+                        </summary>
+                        <div class="inner-summary">
+                            <ul>
+                                <li><a href="#introduction">Introduction - A Research Internship, Underwater</a></li>
+                                <li><a href="#datadog">Datadog - The Spark and First Mistakes</a></li>
+                                <li><a href="#cfm">CFM - Two Topics, Two Approaches, One Offer</a></li>
+                                <li><a href="#bnp">BNP - Tests, Techniques, and Endurance</a></li>
+                                <li><a href="#criteo">Criteo - Playing Your Cards Right</a></li>
+                                <li><a href="#huggingface">Hugging Face - The Unexpected Offer and Take-Home Project</a></li>
+                                <li><a href="#instadeep">Instadeep - Final Round and a Lesson in Focus</a></li>
+                                <li><a href="#bilan">Wrap-Up - Offers, Lessons, and Reflections</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="post-content">
+                    <h2 id="introduction">📝 Introduction - A Research Internship, Underwater</h2>
+                    <p>
+                        From September to January, while starting the MVA master’s program, I undertook an intense search for a research internship. This internship, required from April for at least four months, can be done either in academia or industry, provided the topic is tightly linked to MVA coursework.
+                    </p>
+                    <p>
+                        Personally, I was set on doing mine in industry. I wasn’t planning for an academic PhD in the short term, and private-sector opportunities - whether pre-hire internships, applied research projects, or even CIFRE PhDs - felt both more aligned with my hybrid engineer/researcher profile and more concrete.
+                    </p>
+                    <p>
+                        This decision also came at a chaotic moment: I had just finished my final internship for Supaero, with a mere two-day gap before MVA classes began. I hadn’t defended my report yet, barely finished writing it, and had missed the entire catch-up month. In that messy in-between - exhausted but motivated - I started my internship hunt… not realizing it would become a marathon of its own, full of doubt, pacing, and unexpected lessons.
+                    </p>
+                    <p>
+                        It all really began with a message on LinkedIn from a recruiter at Datadog. That one message was the wake-up call that pushed me to structure my process: updating my CV, polishing my projects, and reevaluating my priorities. Quickly, multiple application processes became entangled: Datadog, CFM, BNP, Criteo, Instadeep, Hugging Face… Each of these companies brought a unique rhythm of hope, disappointment, and learning.
+                    </p>
+                    <p>
+                        I applied mostly through the very active “stage” channel on the MVA Discord, which gathers amazing offers directly from companies or alumni - a real asset. But I also sent cold applications, or applied after stumbling upon a careers page or hearing about an interesting project - even if no offer was posted.
+                    </p>
+                    <p>
+                        Compared to other MVA students, I had a clear advantage: six months of prior ML internship experience with a solid R&D project, plus the final-year courses at Supaero. Many companies test not only algorithmic skills but also theoretical ML knowledge - stats, generalization, optimization, classic models, even deep learning. Having already dealt with these topics gave me a solid foundation for technical interviews.
+                    </p>
+                    <p>
+                        In this post, I go company by company through key steps, challenges, interviews - but more importantly, through the choices, mistakes, and insights I gained.
+                    </p>
+
+                    <h2 id="datadog">🐾 Datadog - The Spark and First Mistakes</h2>
+                    <p>
+                        It all started on September 30th with a LinkedIn message from a Datadog recruiter. That was the first concrete trigger for my search. I realized I had to get serious - the MVA opens doors, yes, but competition is fierce, and the best spots go fast.
+                    </p>
+                    <p>
+                        I began by redoing my CV, updating my personal site, highlighting my technical projects, and replying to the recruiter. The process was clear: an online LeetCode-style HackerRank test, followed by interviews (recruiter, technical, and manager fit).
+                    </p>
+                    <p>
+                        The issue? I had never properly practiced algorithmic interviews (LeetCode). So I dived into NeetCode practice (<a href="https://neetcode.io/practice?tab=neetcode150" target="_blank">highly recommended</a>), alongside MVA courses. I did several exercises daily, first randomly, then following structured patterns. My strategy was: think about the problem, attempt a solution mentally, write code, check the solution, hide it, and retry. I also revisited older exercises to recall solutions mentally.
+                    </p>
+                    <p>
+                        The first HackerRank round arrived quickly: two asynchronous 30-minute exercises. I found them hard; I solved both, but felt unsure about the second. Still, I was advanced to the next round.
+                    </p>
+                    <p>
+                        The recruiter interview went great - the same person from LinkedIn, very friendly and supportive throughout. Classic questions (background, experience, favorite topics), with a good vibe overall. Then came the technical interview, scheduled for late October.
+                    </p>
+                    <p>
+                        This time, I focused on verbalizing my thought process: reformulating problems, asking clarifying questions, explaining brute-force then optimizing, and narrating code out loud. I watched mock interviews and prepared a 15-minute project pitch as requested with slides.
+                    </p>
+                    <p>
+                        On the day, I presented my final-year project, then tackled two exercises: one easy, one interval-based and trickier. Good chemistry with the interviewer. Positive feedback. I moved on to the final “fit” interview with a manager.
+                    </p>
+                    <p>
+                        That’s where I made a strategic mistake.
+                    </p>
+                    <p>
+                        The fit interview was in English. The manager quickly asked which topics I was most interested in. Trying to sound research-inclined, I leaned into technical discussions and drifted away from the more applied tone. In hindsight, I tried to “play the researcher” when my real strength was being a hybrid dev/researcher. The result: rejection. Officially, they were reducing intern hires. Unofficially, I believe it was a mismatch.
+                    </p>
+                    <p>
+                        The key lesson: in industry, development skills matter as much - if not more - than research background. And you must tailor your pitch to your audience. This experience became my compass for all future interviews.
+                    </p>
+                                        <h2 id="cfm">📊 CFM - Two Topics, Two Approaches, One Offer</h2>
+                    <p>
+                        While going through the Datadog process, I continued sending applications in parallel. That’s when I got a positive reply from CFM, with an unexpected proposal: two very different internship topics from two separate teams.
+                    </p>
+                    <p>
+                        The first was a more ML engineering-oriented topic, involving model and feature selection. The second leaned more toward research, focused on probabilistic graphs in finance. Both began with an online CodinGame test - a mix of multiple-choice questions and straightforward coding exercises.
+                    </p>
+                    <p>
+                        I started with the ML topic: about 20 minutes of timed questions on probability, statistics, classic machine learning, some Python, and direct (non-LeetCode-style) code questions. The format was surprising; I felt off at the beginning but gained confidence by the end. I then took the test for the second topic (graphs), which was longer and likely more tailored to Bayesian and graphical topics.
+                    </p>
+                    <p>
+                        Result: positive feedback on both.
+                    </p>
+                    <p>
+                        Next came a technical interview for the ML position with two French researchers - very professional, a bit stiff. They asked for an intro and to discuss a project. I picked my final-year internship on sports betting optimization, a topic I knew well. We discussed feature selection, model choices, implementation trade-offs. Good flow, solid answers. It felt like a match.
+                    </p>
+                    <p>
+                        For the graph research role, the interview was very different: a 1:1 in English with an Italian researcher. The topic was fascinating but technical - probabilistic graphs, Bayesian networks, inference... I had just started a related course at MVA, so my understanding was limited. I gave partial answers to several questions. Though the researcher liked my profile, I sensed it might not be enough. Ten days later, the rejection came.
+                    </p>
+                    <p>
+                        In the end, I received an offer for the ML engineer role, but not for the graph one where I clearly lacked technical depth.
+                    </p>
+                    <p>
+                        Unfortunately, I later learned that finance internships were forbidden this year for MVA students. I had to decline, regretfully. Still, it was one of the most instructive processes I experienced - it confirmed my positioning: technical, strong on dev, but with a real sensitivity for applied research challenges.
+                    </p>
+
+                    <h2 id="bnp">💼 BNP - Tests, Techniques, and Endurance</h2>
+                    <p>
+                        Alongside CFM and after Datadog, I also applied to several big tech/finance companies, including BNP Paribas. The process kicked off with two online HackerRank tests - each with its own format.
+                    </p>
+                    <p>
+                        The first was a 30-minute timed multiple-choice test with nearly 100 questions covering all of machine learning: supervised, unsupervised, deep learning, NLP, vision, and more - classified as easy (E), medium (M), or hard (H). I answered about 70 - time was tight, but the questions were well-crafted. Fueled by strong coffee and recent review sessions (including fast Q&A drills with ChatGPT), I felt okay.
+                    </p>
+                    <p>
+                        The second test was far more demanding: 110 minutes, three LeetCode-style problems, with the last one being quite hard. I finished the first two, but not the third. Despite this, I was selected for a technical interview.
+                    </p>
+                    <p>
+                        The interview lasted an hour with an engineer from the team. It began with a medium-difficulty LeetCode problem, followed by ML, DL, transformers questions, and short applied case studies: token-level classification in NLP, anomaly detection… I really liked the format - very applied, grounded in real-world problems. The LeetCode questions felt easier than in the earlier test - or maybe I had simply improved.
+                    </p>
+                    <p>
+                        A few days later, I had a second technical interview with another engineer. We first discussed my background and projects. Then came more theoretical questions: likelihood, LoRA, RLHF, LLM training, Bayesian methods. I answered well overall. The final part was a logic puzzle - not very hard, but I didn’t do great, likely due to lack of prep. (These are common in quant interviews. I recommend this book - <a href="https://academyflex.com/wp-content/uploads/2024/03/a-practical-guide-to-quantitative-finance-interviews.pdf" target="_blank">especially chapter 2</a> - even if you're not in finance.)
+                    </p>
+                    <p>
+                        Despite that, I received a positive outcome and was invited to a manager interview focused on fit and soft skills. It was pleasant: the manager explained the team’s mission, topics (mostly NLP, automation), and ways of working. I had a simple LeetCode exercise, classic questions, and a brief English section. Friendly vibe.
+                    </p>
+                    <p>
+                        I received an offer soon after.
+                    </p>
+                    <p>
+                        At that point, I had two offers: BNP and CFM. But since finance internships were off-limits, only BNP remained. They encouraged me to continue my other ongoing processes - which they were totally fine with.
+                    </p>
+                    <p>
+                        What I took from the BNP process is how well it reflects the broad skillset expected from strong MVA profiles: algo, ML, theory, implementation, and human fit.
+                    </p>
+
+                    <h2 id="criteo">📦 Criteo - Playing Your Cards Right</h2>
+                    <p>
+                        While progressing through BNP’s process and having to decline CFM’s offer, I got a reply from Criteo - a well-known company for its strong ML division and highly sought-after internships among MVA students.
+                    </p>
+                    <p>
+                        The first test was on CoderPad: a mix of timed multiple-choice questions (on Python, logic, code comprehension) and a few practical exercises. Nothing overly difficult, but the time per question was tight, demanding both speed and accuracy. It lasted around 1.5 hours, and I left with a good feeling. A few days later, I received a positive response.
+                    </p>
+                    <p>
+                        A recruiter reached out for a first interview. She asked me to introduce myself, my experiences, and projects. It was a smooth and pleasant chat. Then came a strategic question: “Would you prefer to apply to the Research track or the ML Engineer track?”
+                    </p>
+                    <p>
+                        This time, learning from earlier mistakes (especially with Datadog), I made a clear and deliberate choice: the ML track. That may have worked in my favor - most MVA students apply to the Research track, which might make the ML track slightly less saturated. The topics can still be very interesting but with a stronger focus on production.
+                    </p>
+                    <p>
+                        Then came the final interview with the manager - about 90 minutes long. He was accompanied by a colleague who mostly observed. The interview was well-structured, technical, and engaging.
+                    </p>
+                    <p>
+                        I started by presenting my background and projects. He asked detailed questions about my experiences and then requested I explain an algorithm of my choice - I picked Transformers. The discussion went deep: we talked about LoRA, RLHF, backpropagation, weight initialization… He was clearly probing for depth. It was intense, but intellectually stimulating.
+                    </p>
+                    <p>
+                        We wrapped up with a Python/statistics mini-exercise - less abstract than usual LeetCode, and more grounded. I felt I did well. He then described the internship topic: a blend of ML and deployment, with strong business impact - an ideal match for me.
+                    </p>
+                    <p>
+                        A few days later, I received an offer.
+                    </p>
+                    <p>
+                        At that point, I had two solid offers: BNP and Criteo. I felt my hybrid research/engineering profile was finally standing out.
+                    </p>
+
+                    <h2 id="huggingface">🤗 Hugging Face - The Unexpected Offer and Take-Home Project</h2>
+                    <p>
+                        A few days after the MVA internship forum - where I met companies like Meta, Mistral, and Datadog - I had a short but positive chat with a Hugging Face recruiter at their booth. He advised me to send him my CV and five preferred offers from their website.
+                    </p>
+                    <p>
+                        I did so that evening, picking topics that genuinely excited me while avoiding the most popular ones (like LLMs or vision). I aimed for more niche subjects.
+                    </p>
+                    <p>
+                        A few days later, I was contacted directly for an interview with the potential supervisor of one of the roles I’d listed (Measuring and understanding the energy impact of AI tasks). The call was surprisingly short - barely 20 minutes. I introduced myself; he asked if I knew libraries like <code>codecarbon</code>, if I had experience with Git, and if I’d used Transformers before. No deep technical questions. I wasn’t sure what to think.
+                    </p>
+                    <p>
+                        The very next day, I received a take-home assignment: measure the energy usage of a small language model (smolLM) under various conditions, and propose ways to reduce it. The brief was minimal - two lines. Total freedom.
+                    </p>
+                    <p>
+                        I gave myself a week to submit something clean. It was just before Christmas. I tested different approaches and tried various hardware configs, though I faced environment limitations. I narrowed it down to what I could realistically do: I produced a clean GitHub repo, clearly documented the experimental protocol, presented the results, and proposed concrete improvements.
+                    </p>
+                    <p>
+                        Then… silence over the holidays.
+                    </p>
+                    <p>
+                        After New Year’s, I followed up politely - mostly because Criteo was pressing for an answer. A few days later, I was invited to a second interview with another potential supervisor. She asked why I was interested in the topic, what I knew about energy measurement, and whether I had done similar projects. There was no feedback on the take-home, but the conversation went well.
+                    </p>
+                    <p>
+                        Finally, a few days later, I got an email from the same recruiter I’d met at the forum. The tone was neutral, so I didn’t know what to expect… but it was a formal internship offer from Hugging Face.
+                    </p>
+                    <p>
+                        At that moment, I had three solid offers on the table: BNP, Criteo, and Hugging Face. One final process was still ongoing - Instadeep - but I already knew the Hugging Face topic was the most aligned with my interests.
+                    </p>
+
+                                        <h2 id="instadeep">🧠 Instadeep - Final Round and a Lesson in Focus</h2>
+                    <p>
+                        Even with three offers on the table (BNP, Criteo, Hugging Face), I decided to complete the ongoing process with Instadeep - a company specializing in applied AI, particularly reinforcement learning.
+                    </p>
+                    <p>
+                        The first step was classic: three LeetCode-style problems on HackerRank, with a time limit. I found them demanding, especially since my mental focus was already divided. Still, I gave it my all and got a positive result.
+                    </p>
+                    <p>
+                        Before the next round, they asked me to rank my preferred topics. I selected a reinforcement learning project - a domain I was starting to get serious about, even if not yet an expert.
+                    </p>
+                    <p>
+                        The next interview was led by a young engineer - more dev-oriented than research. We began with the usual: background, experience, projects. I highlighted my RL work, my software engineering experience, and my enthusiasm for implementation.
+                    </p>
+                    <p>
+                        He then asked several in-depth questions about RL: value functions, MCTS, exploration vs. exploitation. I handled them well. We transitioned into software engineering topics: OOP, design patterns - also fine.
+                    </p>
+                    <p>
+                        He concluded by presenting the internship topic: a balanced mix of research and development. It felt like a good fit, and I was assigned a take-home project.
+                    </p>
+                    <p>
+                        That’s when the Hugging Face offer came in. Still, I decided to see the process through. The assignment was to train an RL agent in a given environment, all in a clean and documented notebook.
+                    </p>
+                    <p>
+                        I submitted it a week later. It had a solid foundation but lacked polish in certain parts. I mentioned advanced methods like distributional RL and the Rainbow paper, but couldn’t explain them well during the final interview. That was a mistake - I should’ve focused on strong points I could confidently discuss rather than topics I barely understood.
+                    </p>
+                    <p>
+                        The final interview was with a research scientist - very sharp. I presented my project, answered advanced RL questions, then moved on to software topics. I felt the “hybrid profile” approach could’ve worked - but I didn’t deliver it as strongly as I wanted.
+                    </p>
+                    <p>
+                        The result was a rejection. It wasn’t a surprise - but a useful wake-up call: when nearing the end of a long search, with multiple offers in hand, you still need to bring your A-game. I’m glad I saw it through - it helped me understand my strengths and weaknesses, especially in RL.
+                    </p>
+
+                    <h2 id="bilan">🧭 Wrap-Up - Offers, Lessons, and Reflections</h2>
+                    <p>
+                        At the end of this intense internship search, I had received four confirmed offers:
+                    </p>
+                    <ul>
+                        <li>BNP Paribas</li>
+                        <li>Criteo</li>
+                        <li>Hugging Face</li>
+                        <li>CFM (declined due to the MVA finance internship rule)</li>
+                    </ul>
+                    <p>
+                        I was rejected at the final stage by:
+                    </p>
+                    <ul>
+                        <li>Datadog</li>
+                        <li>Instadeep</li>
+                        <li>CFM (graph research position)</li>
+                    </ul>
+                    <p>
+                        I also applied to several other companies where I didn’t get a reply or where the process stopped early, including Meta, Adobe, Kyutai, Deezer, Alice & Bob, Valeo, Mistral, and a few smaller startups I discovered along the way.
+                    </p>
+                    <p>
+                        For Meta, I passed an initial screening with a written questionnaire (logistics + technical ML questions). I used ChatGPT to help structure my answers - but never got a reply. That’s common for these hyper-competitive internships (often reserved for profiles with publications or major lab experience).
+                    </p>
+                    <p>
+                        At Valeo, I completed two interviews: one introductory, and a one-hour technical interview around a research paper I had to read beforehand. The topic didn’t excite me much, but I took it seriously. After a negative reply, they offered another project, but I didn’t follow up.
+                    </p>
+
+                    <h3>A marathon, not a sprint</h3>
+                    <p>
+                        This internship search wasn’t linear. It was continuous, overlapping across months - between applications, interviews, prep, and… MVA coursework. I once found myself finishing a Hugging Face take-home in the evening while prepping for a Criteo interview the next day, or doing a HackerRank test between two deep learning classes.
+                    </p>
+                    <p>
+                        Many offers also circulated informally - on the MVA Discord or between students. Some companies asked for just an email with a CV and cover letter, others required formal submissions on career portals. You had to stay alert, reactive, and organized. And also prioritize based on interest and time.
+                    </p>
+
+                    <h3>The MVA effect</h3>
+                    <p>
+                        There’s no doubt the MVA opens serious doors for ML internships - through its reputation and through the quality and diversity of the opportunities it connects you to.
+                    </p>
+                    <p>
+                        Compared to Supaero, where ML opportunities were fewer and more engineering/aerospace-focused, the MVA allowed me to aim higher: Criteo, Hugging Face, Meta - these were places I wouldn't have imagined applying to a year earlier.
+                    </p>
+
+                    <h3>🚀 Final advice</h3>
+                    <ul>
+                        <li><strong>Start early:</strong> the best opportunities go fast.</li>
+                        <li><strong>Polish your materials:</strong> CV, website, GitHub - make them shine.</li>
+                        <li><strong>Prep both algorithmic and theoretical ML interviews.</strong></li>
+                        <li><strong>Position yourself clearly:</strong> don’t try to be what you think the company wants. Play your real strengths (dev, infra, applied ML, research...)</li>
+                        <li><strong>Be curious, but strategic:</strong> some companies require a lot of effort for low success rates - watch your time/effort ratio.</li>
+                        <li><strong>Stay the course:</strong> companies don’t post offers all at once. A rejection in October isn’t final - more doors open later. Think of this search as a marathon - each failed interview is training for the next one.</li>
+                    </ul>
+
+                    <p>
+                        <strong>Last word:</strong> I ultimately chose the internship at Hugging Face - at the crossroads of my interests: applied research, environmental impact, open source, and a passionate technical team. I don’t regret that choice at all, now that the internship is over.
+                    </p>
+
+
+                </div>
+
+                <footer class="post-footer">
+                    <ul class="post-tags">
+                        <li><a href="#">internship</a></li>
+                        <li><a href="#">MVA</a></li>
+                        <li><a href="#">datadog</a></li>
+                        <li><a href="#">career</a></li>
+                    </ul>
+                    <div class="share-buttons">
+                        <a href="#" aria-label="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Share on LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="Share on Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </footer>
+            </article>
+        </main>
+    </body>
+</html>
