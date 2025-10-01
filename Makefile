@@ -1,4 +1,4 @@
-TAG ?= 1.3.1
+TAG ?= 1.3.2
 DOCKER_REPO ?= juliendelavande/site-perso
 NAMESPACE ?= site-perso
 
