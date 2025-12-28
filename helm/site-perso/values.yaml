@@ -10,7 +10,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 namespace:
-  create: true
+  create: false
   name: site-perso
 
 service:
