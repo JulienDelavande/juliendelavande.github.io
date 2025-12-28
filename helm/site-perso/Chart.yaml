@@ -1,0 +1,6 @@
+apiVersion: v2
+name: site-perso
+description: A Helm chart for deploying the personal website
+type: application
+version: 1.0.0
+appVersion: "1.3.2"
